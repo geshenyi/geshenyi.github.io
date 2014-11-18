@@ -1,0 +1,415 @@
+
+<!doctype html>
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____                  
+                            _.' :  `._               
+                        .-.'`.  ;   .'`.-.           
+               __      / : ___\ ;  /___ ; \      __  
+             ,'_ ""=-.:__;".-.";: :".-.":__;.-="" _`,
+             :' `.t""=-.. '<@.`;_  ',@:` ..-=""j.' `;
+                  `:-.._J '-.-'L__ `-.-' L_..-;'     
+                    "-.__ ;  .-"  "-.  : __.-"       
+                        L ' /.======.\ ' J           
+                         "-.   "__"   .-"            
+                        __.l"-:_JL_;-";.__           
+                     .-j/'.;  ;""""  / .'\"-.        
+                   .' /:`. "-.:     .-" .';  `.      
+                .-"  / ;  "-. "-..-" .-"  :    "-.   
+             .+"-.  : :      "-.__.-"      ;-._   \  
+             ; \  `.; ;                    : : "+. ; 
+             :  ;   ; ;                    : ;  : \: 
+             ;  :   ; :                    ;:   ;  : 
+            : \  ;  :  ;                  : ;  /  :: 
+            ;  ; :   ; :                  ;   :   ;: 
+            :  :  ;  :  ;                : :  ;  : ; 
+            ;\    :   ; :                ; ;     ; ; 
+            : `."-;   :  ;              :  ;    /  ; 
+             ;    -:   ; :              ;  : .-"   : 
+             :\     \  :  ;            : \.-"      : 
+              ;`.    \  ; :            ;.'_..-=  / ; 
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/ 
+                    \ / .-"   /.     .'.' ;_:'    ;  
+                     :-""-.`./-.'     /    `.___.'   
+                           \ `t  ._  /               
+                            "-.t-._:'                
+
+-->
+
+<!--
+    
+    So you'd like to know how to use impress.js?
+    
+    You've made the first, very important step - you're reading the source code.
+    And that's how impress.js presentations are built - with HTML and CSS code.
+    
+    Believe me, you need quite decent HTML and CSS skills to be able to use impress.js effectively.
+    And what is even more important, you need to be a designer, too, because there are no default
+    styles for impress.js presentations, there is no default or automatic layout for them.
+    
+    You need to design and build it by hand.
+    
+    So...
+    
+    Would you still like to know how to use impress.js?
+    
+-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Spring MVC + Backbonejs + MySQL Demo</title>
+
+    <meta name="author" content="Chuck Ge" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <!--
+        
+        Impress.js doesn't depend on any external stylesheet. Script adds all styles it needs for
+        presentation to work.
+        
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+        
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+        
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+        
+    -->
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+</head>
+
+<!--
+    
+    Body element is used by impress.js to set some useful class names, that will allow you to detect
+    the support and state of the presentation in CSS or other scripts.
+    
+    First very useful class name is `impress-not-supported`. This class means, that browser doesn't
+    support features required by impress.js, so you should apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+    
+    When impress.js script detects that browser supports all required features, this class name will
+    be removed.
+    
+    The class name on body element also depends on currently active presentation step. More details about
+    it can be found later, when `hint` element is being described.
+    
+-->
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesing things
+    right around the corner of this tag ;)
+    
+-->
+<div id="impress">
+
+    <!--
+        
+        Here is where interesting thing start to happen.
+        
+        Each step of the presentation should be an element inside the `#impress` with a class name
+        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
+        the 'camera' shows them on each step of the presentation.
+        
+        Positioning information is passed through data attributes.
+        
+        In the example below we only specify x and y position of the step element with `data-x="-1000"`
+        and `data-y="-1500` attributes. This means that **the center** of the element (yes, the center)
+        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'.
+        
+        It will not be rotated or scaled.
+        
+    -->
+    <div id="opening" class="step slide"     data-x="-1000" data-y="-1500">
+        <p><b id="spingmvc">SpringMVC</b> <b id="backbonejs">+ Backbonejs</b> <b id="mysql">+ MySQL</b></p> 
+        <b id="demo">Demostration</b>
+        <b id="date">Nov.18 2014</b>
+    </div>
+
+    <!--
+        
+        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
+        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
+        
+        So in the example below it'll be `step-2`.
+        
+        The hash part of the url when this step is active will be `#/step-2`.
+        
+        You can also use `#step-2` in a link, to point directly to this particular step.
+        
+        Please note, that while `#/step-2` (with slash) would also work in a link it's not recommended.
+        Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
+        
+    -->
+    <div id="springmvc1" class="step slide" data-x="0" data-y="-1500">
+        <b>Spring MVC</b>
+        <div id="whatDiv">
+            <p class="my-title">What is Spring MVC?</p>
+            <p class="my-content">Spring MVC is a request-driven,light-weighted MVC framework to facilitate web application development</p>
+        </div>
+        <div id="benefitDiv">
+            <p class="my-title">Benefit of bringing in Spring MVC</p>
+            <ul id="benefitUl" class="my-content">
+                <li>Clear Separation of roles</li>
+                <li>Inherently integrated with Spring</li>
+                <li>Customizable binding and url request mapping</li>
+                <li>Restful webservice supported</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="springmvc2" class="step slide" data-x="1000" data-y="-1500">
+        <b>Spring MVC</b>
+        <div class="backTitle">
+            Work Flow
+        </div>
+        <img id="workflowimg" src="img/mvc.png" width="10px"/>
+    </div>
+
+    <div id="springmvc3" class="step slide" data-x="1000" data-y="-2500">
+        <b>Spring MVC</b>
+        <div class="backTitle">
+            Dispacher Servlet
+        </div>
+        <ul id="dispacherUl">
+            <li>Integrated with Spring</li>
+            <li>Serve as a Front Controller</li>
+            <li>An actual servlet</li>
+            <li>Collaborate with Handler mapping to dispach requests</li>
+            <li>Work with View Resolver to render correct view</li>
+        </ul>
+        <div>
+            <pre id="dispatchcode">
+<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>servlet</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>servlet-name</span><span style='color:#7f0055; '>></span>tutorialServlet<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>servlet-name</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>servlet-class</span><span style='color:#7f0055; '>></span>org.springframework.web.servlet.DispatcherServlet<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>servlet-class</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>init-param</span><span style='color:#7f0055; '>></span>
+		<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>param-name</span><span style='color:#7f0055; '>></span>contextConfigLocation<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>param-name</span><span style='color:#7f0055; '>></span>
+		<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>param-value</span><span style='color:#7f0055; '>></span>classpath:spring/spring-mvc-core-config.xml<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>param-value</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>init-param</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>init-param</span><span style='color:#7f0055; '>></span>
+		<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>param-name</span><span style='color:#7f0055; '>></span>dispatchOptionsRequest<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>param-name</span><span style='color:#7f0055; '>></span>
+		<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>param-value</span><span style='color:#7f0055; '>></span>true<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>param-value</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>init-param</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>load-on-startup</span><span style='color:#7f0055; '>></span>1<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>load-on-startup</span><span style='color:#7f0055; '>></span>
+<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>servlet</span><span style='color:#7f0055; '>></span>
+
+<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>servlet-mapping</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>servlet-name</span><span style='color:#7f0055; '>></span>tutorialServlet<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>servlet-name</span><span style='color:#7f0055; '>></span>
+	<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>url-pattern</span><span style='color:#7f0055; '>></span>/<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>url-pattern</span><span style='color:#7f0055; '>></span>
+<span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; '>servlet-mapping</span><span style='color:#7f0055; '>></span>
+</pre>
+        </div>
+    </div>
+
+    <div id="springmvc4" class="step slide" data-x="0" data-y="-2500">
+        <b>Spring MVC</b>
+        <div class="backTitle">
+            Handler Mapping & View Resolver
+        </div>
+        <ul id="handlermappingUl">
+            <li>Map incoming web requests to appropriate handlers</li>
+            <li>Annotation supported</li>
+            <li>Render models in a browser without tying you to specific view tech</li>
+            <li>JSP, Velocity, XSLT, Freemarkder and JSON etc supported</li>
+            <li>Work with View Resolver to render correct view</li>
+        </ul>
+        <pre id="handlercode">
+@RequestMapping(value="/testcases",method=RequestMethod.GET)
+<span style='color:#7f0055; font-weight:bold; '>public</span> List&lt;TestCase> fetchTestCases(){
+         <span style='color:#3f7f59; '>//omit impl codes</span>
+}
+</pre>
+    </div>
+    
+    <div id="springmvc5" class="step slide" data-x="-1000" data-y="-2500" data-rotate="90">
+        <b>Spring MVC</b>
+        <div class="backTitle">
+            Controller
+        </div>
+        <ul id="controllerUl">
+            <li>Provide access to the application behavior</li>
+            <li>Transformation and Handling</li>
+            <li>Annotation supported</li>
+            <li>Concise, Independent, light-weighted</li>
+        </ul>
+        
+<pre id="ctrlcode">
+@Controller
+public class EmployeeController{
+    @RequestMapping(value="/employees",RequestMethod.GET)
+    @ResponseBody
+    public List<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>Employee</span><span style='color:#7f0055; '>></span> fetchAllEmployees(){
+        //omit impl codes
+    }
+
+    @RequestMapping(value="/employees", RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; '>String</span><span style='color:#7f0055; '>></span> addEmployee(@RequestBody Employee e){
+        //omit impl codes
+    }
+}
+</pre>
+    </div>
+    
+    <div id="backbone" class="step slide" data-x="-1000" data-y="1000">
+        <b>BackboneJS</b>
+        <div class="backTitle">
+            Overview
+        </div>
+        <ul id="backboneOverview">
+            <li>Easy to build single-page application</li>
+            <li>Good code structure</li>
+            <li>Separation of each layer/component</li>
+            <li>Two-way binding between Model and Server side</li>
+            <li>Restful Web Service supported</li>
+        </ul>
+    </div>
+
+    <div id="backbone1" class="step slide" data-x="0" data-y="1000">
+        <b>BackboneJS</b>
+        <div class="backTitle">
+            Model
+        </div>
+        <ul id="modelUl">
+            <li>Containing the interactive data</li>
+            <li>A large part of logic surrounding the data</li>
+            <li>Affluent Api to manipulate data</li>
+        </ul>
+<pre id="modelcode">
+Employee = Backbone.Model.extend({
+        defaults: {
+            name: <span style='color:#2a00ff; '>'Jack'</span>
+            age: 20,
+            jotTitle: <span style='color:#2a00ff; '>'qa'</span>
+        },
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>(){
+            alert(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Welcome to this world</span><span style='color:#2a00ff; '>"</span>);
+        }
+    });
+
+<span style='color:#7f0055; font-weight:bold; '>var</span> employee= <span style='color:#7f0055; font-weight:bold; '>new</span> Employee;
+</pre>
+
+
+    </div>
+
+    <div id="backbone2" class="step slide" data-x="1000" data-y="1000">
+        <b>BackboneJS</b>
+        <div class="backTitle">
+            View
+        </div>
+        <ul id="viewUl">
+            <li>Reflect what your application's data look like</li>
+            <li>Listen to event and react accordingly</li>
+        </ul>
+        <pre id="viewcode">
+&lt;script type=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>text/template</span><span style='color:#2a00ff; '>"</span> id=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>search_template</span><span style='color:#2a00ff; '>"</span>>
+  &lt;label>Search&lt;/label>
+  &lt;input type=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>text</span><span style='color:#2a00ff; '>"</span> id=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>search_input</span><span style='color:#2a00ff; '>"</span> />
+  &lt;input type=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>button</span><span style='color:#2a00ff; '>"</span> id=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>search_button</span><span style='color:#2a00ff; '>"</span> value=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Search</span><span style='color:#2a00ff; '>"</span> />
+&lt;/script>
+
+&lt;div id=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>search_container</span><span style='color:#2a00ff; '>"</span>>&lt;/div>
+
+&lt;script type=<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>text/javascript</span><span style='color:#2a00ff; '>"</span>>
+    SearchView = Backbone.View.extend({
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>(){
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.render();
+        },
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>(){
+            <span style='color:#7f0055; font-weight:bold; '>var</span> template = _.template( $(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>#search_template</span><span style='color:#2a00ff; '>"</span>).html(), {} );
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.html( template );
+        },
+        events: {
+            <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>click input[type=button]</span><span style='color:#2a00ff; '>"</span>: <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>doSearch</span><span style='color:#2a00ff; '>"</span>
+        },
+        doSearch: <span style='color:#7f0055; font-weight:bold; '>function</span>( event ){
+            <span style='color:#3f7f59; '>// Button clicked, you can access the element that was clicked with event.currentTarget</span>
+            alert( <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Search for </span><span style='color:#2a00ff; '>"</span> + $(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>#search_input</span><span style='color:#2a00ff; '>"</span>).val() );
+        }
+    });
+
+    <span style='color:#7f0055; font-weight:bold; '>var</span> search_view = <span style='color:#7f0055; font-weight:bold; '>new</span> SearchView({ el: $(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>#search_container</span><span style='color:#2a00ff; '>"</span>) });
+&lt;/script>
+</pre>
+
+
+    </div>
+    <div id="backbone3" class="step slide" data-x="2000" data-y="1000">
+        <b>BackboneJS</b>
+        <div class="backTitle">
+            Collection
+        </div>
+        <ul id="collectionUl">
+            <li>An ordered set of models</li>
+            <li>Listen to event and react accordingly</li>
+        </ul>
+        <pre id="collectioncode">
+<span style='color:#7f0055; font-weight:bold; '>var</span> Song = Backbone.Model.extend({
+      initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>(){
+          console.<span style='color:#7f0055; font-weight:bold; '>log</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Music is the answer</span><span style='color:#2a00ff; '>"</span>);
+      }
+  });
+
+  <span style='color:#7f0055; font-weight:bold; '>var</span> Album = Backbone.Collection.extend({
+    model: Song
+  });
+</pre>
+
+
+    </div>
+    <div id="qa" class="step" data-x="3000" data-y="1500" data-rotate-x="-40" data-rotate-y="10" data-scale="4">
+        <div id="qacontent">Q & A</div>
+    </div>
+
+</div>
+
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
